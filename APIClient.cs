@@ -19,13 +19,14 @@ namespace WeatherApp
     {
         public string apiUrl = ""; //Api url which initialy is not set 
         public string apiKey = ""; //API key for weather api
-        public string lang = "hr"; //Api language 
+        public string lang = "hr"; //Api language default is croatian
+        public string unit = "metric"; //Api units default is metric celsius
         public requestMethods method = requestMethods.GET; //HTTP method selector which default is GET
 
         //Method that creates and sends request to the api and then returns the raw response
         public string createApiRequest(string request = "") 
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + "/data/2.5/weather?" + request + "&lang=" + lang + "&appid=" + apiKey); //Initialize request object
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + "/data/2.5/weather?" + request + "&lang=" + lang + "&units=" + unit + "&appid=" + apiKey); //Initialize request object
             HttpWebResponse response = null; //Create response object
             string retValue = ""; //Return value which is JSON response for our weather api
 

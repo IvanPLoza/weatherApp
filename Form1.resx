@@ -61,7 +61,7 @@
   <data name="weatherIcon.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        1QAADdUBPdZY8QAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAEuySURBVHhe7d13
+        0AAADdABEGw9BwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAEuySURBVHhe7d13
         wB1VnT7wk95ISEhCSCOVdMSCrq664lrWsqyra1vb7qKsldW1oq5tUVGxl9VddfUn7iEkBAIkEEIKpBLe
         9J5gAyxYUFSQ7vyekzuBeSfPm/eWmXvnnPP88ZHwldw7c2bm+507c4pJkkREYmLNHPgS7IY/wq/hZvgA
         nEz/jogEhwZFJEDW9INPwp8h6cHd8Er690UkKDQoIgGy5tJMoe/N2+hniEgwaFBEAmPNebkC35sH4Cn0
@@ -391,7 +391,7 @@
   <data name="weatherIcon.InitialImage" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAN
-        0wAADdMBvdUcagAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAEuySURBVHhe7d13
+        0AAADdABEGw9BwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAEuySURBVHhe7d13
         wB1VnT7wk95ISEhCSCOVdMSCrq664lrWsqyra1vb7qKsldW1oq5tUVGxl9VddfUn7iEkBAIkEEIKpBLe
         9J5gAyxYUFSQ7vyekzuBeSfPm/eWmXvnnPP88ZHwldw7c2bm+507c4pJkkREYmLNHPgS7IY/wq/hZvgA
         nEz/jogEhwZFJEDW9INPwp8h6cHd8Er690UkKDQoIgGy5tJMoe/N2+hniEgwaFBEAmPNebkC35sH4Cn0

@@ -31,9 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.LocationTitle = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.timeFilterTitle = new System.Windows.Forms.Label();
+            this.weatherTitle = new System.Windows.Forms.Label();
             this.weatherIcon = new System.Windows.Forms.PictureBox();
             this.temperatureDisplay = new System.Windows.Forms.Label();
+            this.weatherDescription = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.weatherIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,14 +59,14 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(221, 25);
             this.dateTimePicker1.TabIndex = 2;
             // 
-            // timeFilterTitle
+            // weatherTitle
             // 
-            this.timeFilterTitle.AutoSize = true;
-            this.timeFilterTitle.Location = new System.Drawing.Point(17, 60);
-            this.timeFilterTitle.Name = "timeFilterTitle";
-            this.timeFilterTitle.Size = new System.Drawing.Size(43, 17);
-            this.timeFilterTitle.TabIndex = 3;
-            this.timeFilterTitle.Text = "label1";
+            this.weatherTitle.AutoSize = true;
+            this.weatherTitle.Location = new System.Drawing.Point(17, 60);
+            this.weatherTitle.Name = "weatherTitle";
+            this.weatherTitle.Size = new System.Drawing.Size(43, 17);
+            this.weatherTitle.TabIndex = 3;
+            this.weatherTitle.Text = "label1";
             // 
             // weatherIcon
             // 
@@ -87,15 +88,25 @@
             this.temperatureDisplay.TabIndex = 5;
             this.temperatureDisplay.Text = "Temperatura";
             // 
+            // weatherDescription
+            // 
+            this.weatherDescription.AutoSize = true;
+            this.weatherDescription.Location = new System.Drawing.Point(17, 82);
+            this.weatherDescription.Name = "weatherDescription";
+            this.weatherDescription.Size = new System.Drawing.Size(43, 17);
+            this.weatherDescription.TabIndex = 3;
+            this.weatherDescription.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(801, 450);
+            this.Controls.Add(this.weatherDescription);
             this.Controls.Add(this.temperatureDisplay);
             this.Controls.Add(this.weatherIcon);
-            this.Controls.Add(this.timeFilterTitle);
+            this.Controls.Add(this.weatherTitle);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.LocationTitle);
             this.Name = "Form1";
@@ -110,9 +121,10 @@
         #endregion
         private System.Windows.Forms.Label LocationTitle;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label timeFilterTitle;
+        private System.Windows.Forms.Label weatherTitle;
         private System.Windows.Forms.PictureBox weatherIcon;
         private System.Windows.Forms.Label temperatureDisplay;
+        private System.Windows.Forms.Label weatherDescription;
     }
 }
 

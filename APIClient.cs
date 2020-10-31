@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using Newtonsoft.Json;
 using System.IO;
 using System.Net;
+using System.CodeDom.Compiler;
 
 namespace WeatherApp
 {
@@ -17,13 +18,14 @@ namespace WeatherApp
     class APIClient
     {
         public string apiUrl = ""; //Api url which initialy is not set 
-        public string request = ""; //Request you want to make
+        public string apiKey = ""; //API key for weather api
+        public string lang = "hr"; //Api language 
         public requestMethods method = requestMethods.GET; //HTTP method selector which default is GET
 
         //Method that creates and sends request to the api and then returns the raw response
-        public string createApiRequest() 
+        public string createApiRequest(string request = "") 
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + request); //Initialize request object
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + "/data/2.5/weather?" + request + "&lang=" + lang + "&appid=" + apiKey); //Initialize request object
             HttpWebResponse response = null; //Create response object
             string retValue = ""; //Return value which is JSON response for our weather api
 
@@ -59,6 +61,12 @@ namespace WeatherApp
             }
 
             return retValue; //Return the response in string format
+        }
+
+        //Method to fetch current weather by city that returns object containing values
+        public currentWeatherResponseObject getCurrentWeatherByCity(string city)
+        {
+            return JsonConvert.DeserializeObject<currentWeatherResponseObject>(createApiRequest("q=" + city));
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*****************
+ * @author: ilozan00@fesb.hr
+ * @brief: College project weather application for PRO1
+ * ***************/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +21,6 @@ namespace WeatherApp
 
     public partial class Form1 : Form
     {
-        private Helpers Helpers; //Initialize helper methods
         private APIClient Api = new APIClient(); //Initialize our api client controller 
 
         public Form1()
@@ -75,6 +78,7 @@ namespace WeatherApp
             temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_max);
             humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(dataCurrent.main.humidity);
             windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(dataCurrent.wind.speed, dataCurrent.wind.deg);
+            visibilityValueDisplay.Text = Helpers.getVisibilityDisplayValuesFromString(dataCurrent.visibility);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -96,5 +100,21 @@ namespace WeatherApp
 
             refreshWeatherData(); //Refresh and request new data
         }
+
+        //Some ideas
+        /*
+        private void futureWeatherDayDisplay_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            int index = futureWeatherDayDisplay.IndexFromPoint(e.Location);
+            if (index != System.Windows.Forms.ListBox.NoMatches)
+            {
+                Debug.WriteLine(futureWeatherDayDisplay.SelectedItem.ToString().Split("/")[0]);
+            }
+        }
+
+        private void futureWeatherHumidtyDisplay_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }*/
     }
 }

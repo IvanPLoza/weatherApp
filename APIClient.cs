@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*****************
+ * @author: ilozan00@fesb.hr
+ * @brief: College project weather application for PRO1
+ * ***************/
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;

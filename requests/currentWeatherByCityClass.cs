@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*****************
+ * @author: ilozan00@fesb.hr
+ * @brief: College project weather application for PRO1
+ * ***************/
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -13,6 +17,8 @@ namespace WeatherApp.requests
         public Temp temp;
 
         public Wind wind;
+
+        public string visibility { get; set; }
 
         public IList<Weather> weather { get; set; }
 

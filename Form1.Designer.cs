@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.LocationTitle = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.weatherIcon = new System.Windows.Forms.PictureBox();
             this.temp = new System.Windows.Forms.Label();
             this.weatherDescription = new System.Windows.Forms.Label();
@@ -55,6 +54,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.citySelector = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.weatherIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,13 +69,6 @@
             this.LocationTitle.TabIndex = 1;
             this.LocationTitle.Text = "Lokacija";
             this.LocationTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(568, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(221, 25);
-            this.dateTimePicker1.TabIndex = 2;
             // 
             // weatherIcon
             // 
@@ -189,24 +182,25 @@
             // 
             this.futureWeatherDayDisplay.FormattingEnabled = true;
             this.futureWeatherDayDisplay.ItemHeight = 17;
-            this.futureWeatherDayDisplay.Location = new System.Drawing.Point(233, 236);
+            this.futureWeatherDayDisplay.Location = new System.Drawing.Point(275, 228);
             this.futureWeatherDayDisplay.Name = "futureWeatherDayDisplay";
-            this.futureWeatherDayDisplay.Size = new System.Drawing.Size(175, 106);
+            this.futureWeatherDayDisplay.Size = new System.Drawing.Size(175, 89);
             this.futureWeatherDayDisplay.TabIndex = 10;
-            // 
+             // 
             // futureWeatherTempDisplay
             // 
             this.futureWeatherTempDisplay.FormattingEnabled = true;
             this.futureWeatherTempDisplay.ItemHeight = 17;
-            this.futureWeatherTempDisplay.Location = new System.Drawing.Point(414, 236);
+            this.futureWeatherTempDisplay.Location = new System.Drawing.Point(456, 228);
             this.futureWeatherTempDisplay.Name = "futureWeatherTempDisplay";
-            this.futureWeatherTempDisplay.Size = new System.Drawing.Size(77, 106);
+            this.futureWeatherTempDisplay.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.futureWeatherTempDisplay.Size = new System.Drawing.Size(77, 89);
             this.futureWeatherTempDisplay.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 216);
+            this.label2.Location = new System.Drawing.Point(275, 208);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 17);
             this.label2.TabIndex = 11;
@@ -215,7 +209,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(409, 216);
+            this.label5.Location = new System.Drawing.Point(451, 208);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(82, 17);
             this.label5.TabIndex = 11;
@@ -224,7 +218,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(497, 216);
+            this.label6.Location = new System.Drawing.Point(539, 208);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 17);
             this.label6.TabIndex = 11;
@@ -234,15 +228,16 @@
             // 
             this.futureWeatherHumidtyDisplay.FormattingEnabled = true;
             this.futureWeatherHumidtyDisplay.ItemHeight = 17;
-            this.futureWeatherHumidtyDisplay.Location = new System.Drawing.Point(497, 236);
+            this.futureWeatherHumidtyDisplay.Location = new System.Drawing.Point(539, 228);
             this.futureWeatherHumidtyDisplay.Name = "futureWeatherHumidtyDisplay";
-            this.futureWeatherHumidtyDisplay.Size = new System.Drawing.Size(77, 106);
+            this.futureWeatherHumidtyDisplay.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.futureWeatherHumidtyDisplay.Size = new System.Drawing.Size(77, 89);
             this.futureWeatherHumidtyDisplay.TabIndex = 10;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(580, 216);
+            this.label7.Location = new System.Drawing.Point(622, 208);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 17);
             this.label7.TabIndex = 11;
@@ -252,15 +247,16 @@
             // 
             this.futureWeatherWindDisplay.FormattingEnabled = true;
             this.futureWeatherWindDisplay.ItemHeight = 17;
-            this.futureWeatherWindDisplay.Location = new System.Drawing.Point(580, 236);
+            this.futureWeatherWindDisplay.Location = new System.Drawing.Point(622, 228);
             this.futureWeatherWindDisplay.Name = "futureWeatherWindDisplay";
-            this.futureWeatherWindDisplay.Size = new System.Drawing.Size(102, 106);
+            this.futureWeatherWindDisplay.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.futureWeatherWindDisplay.Size = new System.Drawing.Size(102, 89);
             this.futureWeatherWindDisplay.TabIndex = 10;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(688, 216);
+            this.label8.Location = new System.Drawing.Point(730, 208);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 17);
             this.label8.TabIndex = 11;
@@ -270,9 +266,10 @@
             // 
             this.futureWeatherVisibilityDisplay.FormattingEnabled = true;
             this.futureWeatherVisibilityDisplay.ItemHeight = 17;
-            this.futureWeatherVisibilityDisplay.Location = new System.Drawing.Point(688, 236);
+            this.futureWeatherVisibilityDisplay.Location = new System.Drawing.Point(730, 228);
             this.futureWeatherVisibilityDisplay.Name = "futureWeatherVisibilityDisplay";
-            this.futureWeatherVisibilityDisplay.Size = new System.Drawing.Size(77, 106);
+            this.futureWeatherVisibilityDisplay.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.futureWeatherVisibilityDisplay.Size = new System.Drawing.Size(77, 89);
             this.futureWeatherVisibilityDisplay.TabIndex = 10;
             // 
             // futureHourlyWeatherDisplay
@@ -301,27 +298,37 @@
             "Split",
             "Zagreb",
             "Kaštela"});
-            this.citySelector.Location = new System.Drawing.Point(655, 48);
+            this.citySelector.Location = new System.Drawing.Point(673, 20);
             this.citySelector.Name = "citySelector";
-            this.citySelector.Size = new System.Drawing.Size(134, 25);
+            this.citySelector.Size = new System.Drawing.Size(116, 25);
             this.citySelector.TabIndex = 14;
             this.citySelector.SelectedIndexChanged += new System.EventHandler(this.citySelector_SelectedIndexChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(559, 51);
+            this.label10.Location = new System.Drawing.Point(577, 23);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(90, 17);
             this.label10.TabIndex = 15;
             this.label10.Text = "Izaberite grad";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 16.30189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(270, 164);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(186, 35);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "Pregled tjedna";
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(866, 434);
+            this.ClientSize = new System.Drawing.Size(848, 434);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.citySelector);
             this.Controls.Add(this.label9);
@@ -347,8 +354,9 @@
             this.Controls.Add(this.weatherDescription);
             this.Controls.Add(this.temp);
             this.Controls.Add(this.weatherIcon);
-            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.LocationTitle);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "WeatherApp";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -360,7 +368,6 @@
 
         #endregion
         private System.Windows.Forms.Label LocationTitle;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.PictureBox weatherIcon;
         private System.Windows.Forms.Label temp;
         private System.Windows.Forms.Label weatherDescription;
@@ -386,6 +393,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox citySelector;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
     }
 }
 

@@ -21,6 +21,8 @@ namespace WeatherApp
             InitializeComponent();
         }
 
+
+
         private void label1_Click(object sender, EventArgs e)
         {
             
@@ -38,25 +40,35 @@ namespace WeatherApp
             Api.apiUrl = "http://api.openweathermap.org"; //Define api url
             Api.apiKey = "b46d222eaa2ec1c02f06e0a0e9115464"; //Define api key
 
-            currentWeatherResponseObject data = Api.getCurrentWeatherByCity("Split");
+            currentWeatherResponseObject dataCurrent = Api.getCurrentWeatherByCity("Split");
+            futureDailyWeatherByCityResponseObject dataDaily = Api.getFutureDailyWeatherByCity("Split");
 
             
-            if (data.errorMessages == null)
+            if (dataCurrent.errorMessages == null)
             {
-                LocationTitle.Text = data.name;
-                weatherTitle.Text = data.weather[0].main;
-                weatherDescription.Text = data.weather[0].description;
-                temperatureValueDisplay.Text = Helpers.getTemperatureDisplayValueFromString(data.main.temp);
-                temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(data.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(data.main.temp_max);
-                humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(data.main.humidty);
-                windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(data.wind.speed, data.wind.deg);
+                //Current weather display values
+                LocationTitle.Text = dataCurrent.name;
+                weatherTitle.Text = dataCurrent.weather[0].main;
+                weatherDescription.Text = dataCurrent.weather[0].description;
+                temperatureValueDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp);
+                temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_max);
+                humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(dataCurrent.main.humidity);
+                windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(dataCurrent.wind.speed, dataCurrent.wind.deg);
+
+                //Future hourly weather display values
+                futureHourlyWeatherDisplay.Items.AddRange(Helpers.getFutureWeatherHourlyDisplayValues(dataDaily.list, dataDaily.cnt));
+
+                //Future daily weather display values
+                IList<Helpers.DailyWeather> weatherDays = Helpers.getFutureDailyWeatherList(dataDaily.list);
+                futureWeatherDayDisplay.Text = 
+
             }
             else
             {
-                LocationTitle.Text = "FAILED";
+                LocationTitle.Text = "ERROR";
+                Debug.WriteLine(dataCurrent.errorMessages);
+                Debug.WriteLine(dataDaily.errorMessages);
             }
-            
-            Debug.WriteLine(data.errorMessages);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,6 +87,11 @@ namespace WeatherApp
         }
 
         private void weatherTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void weatherIcon_Click(object sender, EventArgs e)
         {
 
         }

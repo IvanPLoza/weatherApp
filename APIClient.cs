@@ -6,6 +6,7 @@ using System.IO;
 using System.Net;
 using System.CodeDom.Compiler;
 using WeatherApp.requests;
+using System.Diagnostics;
 
 namespace WeatherApp
 {
@@ -27,10 +28,22 @@ namespace WeatherApp
         //Method that creates and sends request to the api and then returns the raw response
         public string createApiRequest(string request = "") 
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + "/data/2.5/" + request + "&lang=" + lang + "&units=" + unit + "&appid=" + apiKey); //Initialize request object
+            string endpoint = 
+                apiUrl + 
+                "/data/2.5/" + 
+                request + 
+                "&lang=" + 
+                lang + 
+                "&units=" + 
+                unit + 
+                "&appid=" + 
+                apiKey
+            ; //Encapsulate endpoint string from parameters
+
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(endpoint); //Initialize request object
             HttpWebResponse response = null; //Create response object
             string retValue = ""; //Return value which is JSON response for our weather api
-
+            Debug.WriteLine("I made a request: " + endpoint);
             req.Method = method.ToString(); //Set request method
 
             try
@@ -71,10 +84,10 @@ namespace WeatherApp
             return JsonConvert.DeserializeObject<currentWeatherResponseObject>(createApiRequest("weather?q=" + city));
         }
 
-        //Method to fetch current weather by city that returns object containing values
-        public currentWeatherResponseObject getFutureWeatherByCity(string city)
+        //Method to fetch future daily weather by city that returns object containing values
+        public futureDailyWeatherByCityResponseObject getFutureDailyWeatherByCity(string city)
         {
-            return JsonConvert.DeserializeObject<currentWeatherResponseObject>(createApiRequest("weather?q=" + city));
+            return JsonConvert.DeserializeObject<futureDailyWeatherByCityResponseObject>(createApiRequest("forecast?q=" + city));
         }
     }
 }

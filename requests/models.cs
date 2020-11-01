@@ -15,7 +15,7 @@ namespace WeatherApp.requests
     {
         public string temp { get; set; }
 
-        public string humidty { get; set; }
+        public string humidity { get; set; }
 
         public string temp_min { get; set; }
 
@@ -34,5 +34,18 @@ namespace WeatherApp.requests
     {
         public string temp { get; set; }
         public string humidity { get; set; }
+    }
+
+    public class ListW
+    {
+        public int dt { get; set; }
+
+        public string visibility { get; set; }
+
+        public Main main;
+
+        public IList<Weather> weather;
+
+        public Wind wind;
     }
 }

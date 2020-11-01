@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Net;
 using System.CodeDom.Compiler;
+using WeatherApp.requests;
 
 namespace WeatherApp
 {
@@ -26,7 +27,7 @@ namespace WeatherApp
         //Method that creates and sends request to the api and then returns the raw response
         public string createApiRequest(string request = "") 
         {
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + "/data/2.5/weather?" + request + "&lang=" + lang + "&units=" + unit + "&appid=" + apiKey); //Initialize request object
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create(apiUrl + "/data/2.5/" + request + "&lang=" + lang + "&units=" + unit + "&appid=" + apiKey); //Initialize request object
             HttpWebResponse response = null; //Create response object
             string retValue = ""; //Return value which is JSON response for our weather api
 
@@ -67,7 +68,13 @@ namespace WeatherApp
         //Method to fetch current weather by city that returns object containing values
         public currentWeatherResponseObject getCurrentWeatherByCity(string city)
         {
-            return JsonConvert.DeserializeObject<currentWeatherResponseObject>(createApiRequest("q=" + city));
+            return JsonConvert.DeserializeObject<currentWeatherResponseObject>(createApiRequest("weather?q=" + city));
+        }
+
+        //Method to fetch current weather by city that returns object containing values
+        public currentWeatherResponseObject getFutureWeatherByCity(string city)
+        {
+            return JsonConvert.DeserializeObject<currentWeatherResponseObject>(createApiRequest("weather?q=" + city));
         }
     }
 }

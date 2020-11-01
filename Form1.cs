@@ -10,6 +10,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeatherApp.helpers;
+using WeatherApp.requests;
 
 namespace WeatherApp
 {
@@ -39,14 +40,23 @@ namespace WeatherApp
 
             currentWeatherResponseObject data = Api.getCurrentWeatherByCity("Split");
 
-            LocationTitle.Text = data.name;
-            weatherTitle.Text = data.weather[0].main;
-            weatherDescription.Text = data.weather[0].description;
-            temperatureValueDisplay.Text = Helpers.getTemperatureDisplayValueFromString(data.main.temp);
-            temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(data.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(data.main.temp_max);
-            humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(data.main.humidty);
-            windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(data.wind.speed, data.wind.deg);
-            Debug.WriteLine(data);
+            
+            if (data.errorMessages == null)
+            {
+                LocationTitle.Text = data.name;
+                weatherTitle.Text = data.weather[0].main;
+                weatherDescription.Text = data.weather[0].description;
+                temperatureValueDisplay.Text = Helpers.getTemperatureDisplayValueFromString(data.main.temp);
+                temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(data.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(data.main.temp_max);
+                humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(data.main.humidty);
+                windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(data.wind.speed, data.wind.deg);
+            }
+            else
+            {
+                LocationTitle.Text = "FAILED";
+            }
+            
+            Debug.WriteLine(data.errorMessages);
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,6 +70,11 @@ namespace WeatherApp
         }
 
         private void weatherDescription_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void weatherTitle_Click(object sender, EventArgs e)
         {
 
         }

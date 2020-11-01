@@ -91,7 +91,7 @@
             // weatherDescription
             // 
             this.weatherDescription.AutoSize = true;
-            this.weatherDescription.Location = new System.Drawing.Point(165, 129);
+            this.weatherDescription.Location = new System.Drawing.Point(165, 13);
             this.weatherDescription.Name = "weatherDescription";
             this.weatherDescription.Size = new System.Drawing.Size(43, 17);
             this.weatherDescription.TabIndex = 3;
@@ -101,11 +101,12 @@
             // weatherTitle
             // 
             this.weatherTitle.AutoSize = true;
-            this.weatherTitle.Location = new System.Drawing.Point(165, 146);
+            this.weatherTitle.Location = new System.Drawing.Point(165, 116);
             this.weatherTitle.Name = "weatherTitle";
             this.weatherTitle.Size = new System.Drawing.Size(43, 17);
             this.weatherTitle.TabIndex = 6;
             this.weatherTitle.Text = "label1";
+            this.weatherTitle.Click += new System.EventHandler(this.weatherTitle_Click);
             // 
             // label1
             // 

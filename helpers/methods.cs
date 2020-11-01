@@ -42,5 +42,17 @@ namespace WeatherApp.helpers
                 return "Ne";
             }
         }
+
+        public static string getVisibilityDisplayValuesFromString(string val)
+        {
+            if (val != null)
+            {
+                return val + "%";
+            }
+            else
+            {
+                return "Ne";
+            }
+        }
     }
 }

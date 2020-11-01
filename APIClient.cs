@@ -23,6 +23,8 @@ namespace WeatherApp
         public string apiKey = ""; //API key for weather api
         public string lang = "hr"; //Api language default is croatian
         public string unit = "metric"; //Api units default is metric celsius
+        public string city = ""; //Api city that we are getting weather for
+
         public requestMethods method = requestMethods.GET; //HTTP method selector which default is GET
 
         //Method that creates and sends request to the api and then returns the raw response

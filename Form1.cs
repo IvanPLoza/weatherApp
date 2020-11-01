@@ -14,86 +14,87 @@ using WeatherApp.requests;
 
 namespace WeatherApp
 {
+
     public partial class Form1 : Form
     {
+        private Helpers Helpers; //Initialize helper methods
+        private APIClient Api = new APIClient(); //Initialize our api client controller 
+
         public Form1()
         {
             InitializeComponent();
         }
 
-
-
-        private void label1_Click(object sender, EventArgs e)
+        private void refreshWeatherData()
         {
-            
-        }
+            currentWeatherResponseObject dataCurrent = Api.getCurrentWeatherByCity(Api.city);            //Request current weather data
+            futureDailyWeatherByCityResponseObject dataDaily = Api.getFutureDailyWeatherByCity(Api.city);//Request future weather data
 
-        private void Form1_Activated(object sender, EventArgs e)
-        {
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Helpers Helpers; //Initialize helper methods
-            APIClient Api = new APIClient(); //Initialize our api client controller 
-            Api.apiUrl = "http://api.openweathermap.org"; //Define api url
-            Api.apiKey = "b46d222eaa2ec1c02f06e0a0e9115464"; //Define api key
-
-            currentWeatherResponseObject dataCurrent = Api.getCurrentWeatherByCity("Split");
-            futureDailyWeatherByCityResponseObject dataDaily = Api.getFutureDailyWeatherByCity("Split");
-
-            
             if (dataCurrent.errorMessages == null)
             {
-                //Current weather display values
-                LocationTitle.Text = dataCurrent.name;
-                weatherTitle.Text = dataCurrent.weather[0].main;
-                weatherDescription.Text = dataCurrent.weather[0].description;
-                temperatureValueDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp);
-                temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_max);
-                humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(dataCurrent.main.humidity);
-                windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(dataCurrent.wind.speed, dataCurrent.wind.deg);
-
-                //Future hourly weather display values
-                futureHourlyWeatherDisplay.Items.AddRange(Helpers.getFutureWeatherHourlyDisplayValues(dataDaily.list, dataDaily.cnt));
-
-                //Future daily weather display values
-                Helpers.DailyWeather[] weatherDays = Helpers.getFutureDailyWeatherList(dataDaily.list, dataDaily.cnt);
-                futureWeatherDayDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDayDisplayValues(weatherDays, weatherDays.Length));
-
+                loadCurrentWeatherData(dataCurrent);    //Display the current weather values
+                loadFutureWeatherData(dataDaily);       //Display the future weather values
             }
             else
             {
+                //If error happens log into debug and let user know there is an error
                 LocationTitle.Text = "ERROR";
                 Debug.WriteLine(dataCurrent.errorMessages);
                 Debug.WriteLine(dataDaily.errorMessages);
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void loadFutureWeatherData(futureDailyWeatherByCityResponseObject dataDaily)
         {
+            //Future hourly weather display values
+            futureHourlyWeatherDisplay.Items.Clear(); //Clear previous values if there were any
+            futureHourlyWeatherDisplay.Items.AddRange(Helpers.getFutureWeatherHourlyDisplayValues(dataDaily.list, dataDaily.cnt));
 
+            //Future daily weather display values
+            Helpers.DailyWeather[] weatherDays = Helpers.getFutureDailyWeatherList(dataDaily.list, dataDaily.cnt);
+            futureWeatherDayDisplay.Items.Clear(); //Clear previous values if there were any
+            futureWeatherTempDisplay.Items.Clear(); //Clear previous values if there were any
+            futureWeatherVisibilityDisplay.Items.Clear(); //Clear previous values if there were any
+            futureWeatherHumidtyDisplay.Items.Clear(); //Clear previous values if there were any
+            futureWeatherWindDisplay.Items.Clear(); //Clear previous values if there were any
+            futureWeatherDayDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDisplayValues(weatherDays, "day"));
+            futureWeatherTempDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDisplayValues(weatherDays, "temp"));
+            futureWeatherVisibilityDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDisplayValues(weatherDays, "vis"));
+            futureWeatherHumidtyDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDisplayValues(weatherDays, "hum"));
+            futureWeatherWindDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDisplayValues(weatherDays, "wind"));
         }
 
-        private void temperatureDisplay_Click(object sender, EventArgs e)
+        private void loadCurrentWeatherData(currentWeatherResponseObject dataCurrent)
         {
-
+            //Current weather display values
+            LocationTitle.Text = dataCurrent.name;
+            weatherIcon.Load(Helpers.getIconUrl(dataCurrent.weather[0].icon));
+            weatherDescription.Text = dataCurrent.weather[0].description;
+            temperatureValueDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp);
+            temperatureMinMaxDisplay.Text = Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_min) + "/" + Helpers.getTemperatureDisplayValueFromString(dataCurrent.main.temp_max);
+            humidityValueDisplay.Text = Helpers.getHumidtyDisplayValueFromString(dataCurrent.main.humidity);
+            windValueDisplay.Text = Helpers.getWindDisplayValuesFromString(dataCurrent.wind.speed, dataCurrent.wind.deg);
         }
 
-        private void weatherDescription_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
+            Api.unit = "metric";                                //Use metric values 
+            Api.city = "Split";                                 //Let the default city to be Split, Croatia
+            Api.lang = "hr";                                    //Set desired language for the weather data
+            Api.apiUrl = "http://api.openweathermap.org";       //Set api url
+            Api.apiKey = "b46d222eaa2ec1c02f06e0a0e9115464";    //Set api key
 
+            citySelector.SelectedIndex = citySelector.FindStringExact(Api.city); //Set default city
+
+            refreshWeatherData();   //Load for the first time
         }
 
-        private void weatherTitle_Click(object sender, EventArgs e)
+        private void citySelector_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Api.city = citySelector.SelectedItem.ToString(); //Set city
 
-        }
-
-        private void weatherIcon_Click(object sender, EventArgs e)
-        {
-
+            refreshWeatherData(); //Refresh and request new data
         }
     }
 }

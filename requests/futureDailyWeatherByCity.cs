@@ -10,8 +10,7 @@ namespace WeatherApp.requests
 
         public IList<ListW> list { get; set; }
 
-
-
+        public string [] errorMessages { get; set; }
 
     }
 }

@@ -59,8 +59,8 @@ namespace WeatherApp
                 futureHourlyWeatherDisplay.Items.AddRange(Helpers.getFutureWeatherHourlyDisplayValues(dataDaily.list, dataDaily.cnt));
 
                 //Future daily weather display values
-                IList<Helpers.DailyWeather> weatherDays = Helpers.getFutureDailyWeatherList(dataDaily.list);
-                futureWeatherDayDisplay.Text = 
+                Helpers.DailyWeather[] weatherDays = Helpers.getFutureDailyWeatherList(dataDaily.list, dataDaily.cnt);
+                futureWeatherDayDisplay.Items.AddRange(Helpers.getFutureDailyWeatherDayDisplayValues(weatherDays, weatherDays.Length));
 
             }
             else

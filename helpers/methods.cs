@@ -97,9 +97,15 @@ namespace WeatherApp.helpers
             return ret;
         }
 
-        public static string getFutureDailyWeatherDay(DailyWeather weather)
+        public static string[] getFutureDailyWeatherDayDisplayValues(DailyWeather[] weathers, int count)
         {
-            return weather.date.DayOfWeek + " " + weather.title;
+            string[] ret = new string[count];
+
+            for (int i = 0; i < count; i++)
+            {
+                ret[i] = weathers[i].date.DayOfWeek + "/" + weathers[i].title;
+            }
+            return ret;
         }
 
         public static string getFutureDailyWeatherTemperature(DailyWeather weather)

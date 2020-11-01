@@ -96,7 +96,6 @@
             this.weatherDescription.Name = "weatherDescription";
             this.weatherDescription.Size = new System.Drawing.Size(80, 21);
             this.weatherDescription.TabIndex = 3;
-            this.weatherDescription.Text = "label1";
             this.weatherDescription.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
@@ -133,7 +132,6 @@
             this.temperatureMinMaxDisplay.Name = "temperatureMinMaxDisplay";
             this.temperatureMinMaxDisplay.Size = new System.Drawing.Size(85, 19);
             this.temperatureMinMaxDisplay.TabIndex = 5;
-            this.temperatureMinMaxDisplay.Text = "10";
             this.temperatureMinMaxDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // humidityValueDisplay
@@ -143,7 +141,6 @@
             this.humidityValueDisplay.Name = "humidityValueDisplay";
             this.humidityValueDisplay.Size = new System.Drawing.Size(85, 19);
             this.humidityValueDisplay.TabIndex = 5;
-            this.humidityValueDisplay.Text = "10";
             this.humidityValueDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // visibilityValueDisplay
@@ -153,7 +150,6 @@
             this.visibilityValueDisplay.Name = "visibilityValueDisplay";
             this.visibilityValueDisplay.Size = new System.Drawing.Size(85, 19);
             this.visibilityValueDisplay.TabIndex = 5;
-            this.visibilityValueDisplay.Text = "10";
             this.visibilityValueDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // windValueDisplay
@@ -163,7 +159,6 @@
             this.windValueDisplay.Name = "windValueDisplay";
             this.windValueDisplay.Size = new System.Drawing.Size(85, 19);
             this.windValueDisplay.TabIndex = 5;
-            this.windValueDisplay.Text = "10";
             this.windValueDisplay.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // temperatureValueDisplay
@@ -175,7 +170,6 @@
             this.temperatureValueDisplay.Name = "temperatureValueDisplay";
             this.temperatureValueDisplay.Size = new System.Drawing.Size(109, 35);
             this.temperatureValueDisplay.TabIndex = 1;
-            this.temperatureValueDisplay.Text = "Lokacija";
             this.temperatureValueDisplay.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // futureWeatherDayDisplay
@@ -186,7 +180,7 @@
             this.futureWeatherDayDisplay.Name = "futureWeatherDayDisplay";
             this.futureWeatherDayDisplay.Size = new System.Drawing.Size(175, 89);
             this.futureWeatherDayDisplay.TabIndex = 10;
-             // 
+            // 
             // futureWeatherTempDisplay
             // 
             this.futureWeatherTempDisplay.FormattingEnabled = true;

@@ -52,4 +52,11 @@ namespace WeatherApp.requests
 
         public Wind wind;
     }
+
+
+    //I needed to have inheritance example so I will create errorMessages from this class and inherit it into request classes
+    public class ErrorList
+    {
+        public string[] errorMessages { get; set; } 
+    }
 }

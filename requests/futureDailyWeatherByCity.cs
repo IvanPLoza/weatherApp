@@ -8,13 +8,11 @@ using System.Text;
 
 namespace WeatherApp.requests
 {
-    public class futureDailyWeatherByCityResponseObject
+    public class futureDailyWeatherByCityResponseObject : ErrorList
     {
         public int cnt { get; set; }
 
         public IList<ListW> list { get; set; }
-
-        public string [] errorMessages { get; set; }
 
     }
 }

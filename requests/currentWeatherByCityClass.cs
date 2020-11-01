@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace WeatherApp.requests
 {
 
-    public class currentWeatherResponseObject
+    public class currentWeatherResponseObject : ErrorList
     {
         public Main main;
 
@@ -25,7 +25,5 @@ namespace WeatherApp.requests
         public string name { get; set; }
 
         public string id { get; set; }
-
-        public IList <string> errorMessages { get; set; }
     }
 }

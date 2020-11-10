@@ -98,6 +98,8 @@ namespace WeatherApp
         {
             Api.city = citySelector.SelectedItem.ToString(); //Set city
 
+            Debug.WriteLine("Korisnik [{0}] je promjenio grad u: {1}", Environment.UserName, citySelector.SelectedItem);
+
             refreshWeatherData(); //Refresh and request new data
         }
 

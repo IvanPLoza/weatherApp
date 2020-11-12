@@ -91,6 +91,8 @@ namespace WeatherApp
 
             citySelector.SelectedIndex = citySelector.FindStringExact(Api.city); //Set default city
 
+            Helpers.appStartLog();
+
             refreshWeatherData();   //Load for the first time
         }
 
@@ -99,6 +101,8 @@ namespace WeatherApp
             Api.city = citySelector.SelectedItem.ToString(); //Set city
 
             Debug.WriteLine("Korisnik [{0}] je promjenio grad u: {1}", Environment.UserName, citySelector.SelectedItem);
+
+            Helpers.createLog("Promjena grada u " + citySelector.SelectedItem.ToString());
 
             refreshWeatherData(); //Refresh and request new data
         }

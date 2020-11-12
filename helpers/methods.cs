@@ -8,12 +8,18 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography.Xml;
 using System.Text;
+using System.Threading.Tasks.Dataflow;
 using WeatherApp.requests;
+using System.IO;
 
 namespace WeatherApp.helpers
 {
     public class Helpers
     {
+
+        //LOG FILE open and create if doesn't exists
+        public static string logPath = @"c:/temp/weatherAppLogs.txt";
+
         //Daily weather object constructor class
         public class DailyWeather
         {
@@ -228,6 +234,32 @@ namespace WeatherApp.helpers
             }
 
             return weather;
+        }
+
+        public static void createLog(string log)
+        {
+            using (StreamWriter sw = File.AppendText(logPath))
+            {
+                sw.WriteLine("{0}: {1}", Environment.UserName, log);
+            }
+        }
+
+        public static void appStartLog()
+        {
+            if (!File.Exists(logPath))
+            {
+                using (StreamWriter sw = File.CreateText(logPath))
+                {
+                    sw.WriteLine("======== {0} ========", DateTime.Now.ToString());
+                }
+            }
+            else
+            {
+                using (StreamWriter sw = File.AppendText(logPath))
+                {
+                    sw.WriteLine("======== {0} ========", DateTime.Now.ToString());
+                }
+            }
         }
     }
 }
